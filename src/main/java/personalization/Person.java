@@ -181,10 +181,10 @@ public abstract class Person {
     protected void setPartner(Person partner) {
         this.partner = partner;
     }
-    protected void setStatus(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
-    protected void setDateOfDeath(LocalDate dateOfDeath) {
+    public void setDateOfDeath(LocalDate dateOfDeath) {
         this.dateOfDeath = dateOfDeath;
     }
     protected List<Person> getChildren() {

@@ -1,12 +1,15 @@
 package mantests;
 
 import datesourse.DateForDataProvider;
+import exceptions.DeadPersonException;
+import exceptions.DoubleActionException;
 import exceptions.ObjectNullException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import personalization.Man;
+import personalization.Status;
 import personalization.Woman;
 
 import java.time.LocalDate;
@@ -48,7 +51,41 @@ public class ManCreateFamilyTests {
     public void testManCreateFamilyNullObjectException(){
         Assert.assertThrows(ObjectNullException.class, () -> this.man.createFamily(null, false, true));
     }
-    
 
+    @Test
+    public void testManCreateFamilyDoubleActionException(){
+        Assert.assertThrows(DoubleActionException.class, () -> this.man.createFamily(
+                new Woman("Hanna", "Hang", LocalDate.of(2010, 01, 01))
+                , true, true));
+    }
+    @Test
+    public void testManCreateFamilyCheckIsAliveException(){
+        this.man.setDateOfDeath(LocalDate.of(2020, 10, 10));
+        Assert.assertThrows(DeadPersonException.class,() -> this.man.createFamily(
+                new Woman("Hanna", "Hang", LocalDate.of(2010, 01, 01))
+                , false, true));
+    }
+    @Test
+    public void testManCreateFamilyCheckIsAliveWomanException(){
+        Woman newWife =  new Woman("Hanna", "Hang", LocalDate.of(2010, 01, 01));
+        newWife.setDateOfDeath(LocalDate.of(2021,01,02));
+        Assert.assertThrows(DeadPersonException.class,() -> this.man.createFamily(
+                newWife, false, true));
+    }
+
+    @Test
+    public void testManCreateFamilyCheckMarriedException(){
+        this.man.setStatus(Status.IS_MARRIED);
+        Assert.assertThrows(DoubleActionException.class, () -> this.man.createFamily(
+                new Woman("Hanna", "Hang", LocalDate.of(2010, 01, 01))
+                , false, true));
+    }
+    @Test
+    public void testManCreateFamilyCheckMarriedWomanException(){
+        Woman newWife =  new Woman("Hanna", "Hang", LocalDate.of(2010, 01, 01));
+        newWife.setStatus(Status.IS_MARRIED);
+        Assert.assertThrows(DoubleActionException.class, () -> this.man.createFamily(
+                newWife, false, true));
+    }
 
 }
