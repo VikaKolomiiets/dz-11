@@ -20,7 +20,7 @@ public abstract class Person {
     private Status status;
     private List<Person> children;
 
-    public Person(String firstName, String lastName, LocalDate dateOfBirth) throws Exception {
+    public Person(String firstName, String lastName, LocalDate dateOfBirth) {
         this.checkName(firstName);
         this.checkName(lastName);
         this.checkDate(dateOfBirth);
@@ -44,11 +44,11 @@ public abstract class Person {
         }
     }
 
-    public void divorce(boolean isBackLastName, boolean isBackLastNamePartner) throws Exception {
+    public void divorce(boolean isBackLastName, boolean isBackLastNamePartner) {
         this.checkIsAlive(this);;
         this.checkIsAlive(this.getPartner());
         if (this.getStatus() != Status.IS_MARRIED){
-            throw new Exception(this.firstName + " " + this.lastName + " doesn't have the status 'is married'");
+            throw new MerriedStatusException(this.firstName, this.lastName);
         }
         this.getPartner().setStatus(Status.IS_DIVORCED);
         this.setStatus(Status.IS_DIVORCED);
@@ -98,7 +98,7 @@ public abstract class Person {
     protected void adoptChildInner(Person child) {
         this.checkIsAlive(child);
         if (!this.getStatus().equals(Status.IS_MARRIED)) {
-            throw new StatusForAdoptingException(this.getFirstName(), this.getLastName());
+            throw new MerriedStatusException(this.getFirstName(), this.getLastName());
         }
         if (this.getFullAge() < ADOPTION_PARENT_AGE && this.getPartner().getFullAge() < ADOPTION_PARENT_AGE){
             throw new ParentAgeException(this.getFirstName(), this.getPartner().getFirstName());
