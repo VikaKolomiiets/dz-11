@@ -75,7 +75,7 @@ public abstract class Person {
 
     protected void createFamilyInner(Person newPartner, boolean isChangeLastName, boolean isChangeLastNameNewPartner) {
         if (newPartner == null){
-            throw new StringNullException("Partner");
+            throw new ObjectNullException("Partner");
         }
         this.checkIsAlive(this);
         this.checkIsAlive(newPartner);
@@ -109,7 +109,7 @@ public abstract class Person {
     protected void addChild(Person child) {
         this.checkIsAlive(this);
         if (child == null){
-            throw new StringNullException("Child");
+            throw new ObjectNullException("Child");
         }
         this.children.add(child);
     }
@@ -125,7 +125,7 @@ public abstract class Person {
     }
     private void checkName(String name){
         if (name == null) {
-            throw new StringNullException("Name");
+            throw new ObjectNullException("Name");
         }
         if (name.length() < 2) {
             throw new NameException(name);
@@ -133,7 +133,7 @@ public abstract class Person {
     }
     private void checkDate(LocalDate date) {
         if (date == null){
-            throw new StringNullException("Date of Birth");
+            throw new ObjectNullException("Date of Birth");
         }
         if (date.isBefore(MIN_DATE) || date.isAfter(LocalDate.now())){
             throw new OutOfDataRangeException("Date of Birth");
