@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Man extends Person{
     private static final int RETIRED_AGE = 65;
-    public Man(String firstName, String lastName, LocalDate dateOfBirth) throws Exception {
+    public Man(String firstName, String lastName, LocalDate dateOfBirth) {
         super(firstName, lastName, dateOfBirth);
     }
 
-    public void createFamily(Woman newWife, boolean isChangeLastName, boolean isChangeLastNameNewWife) throws Exception {
+    public void createFamily(Woman newWife, boolean isChangeLastName, boolean isChangeLastNameNewWife) {
         createFamilyInner(newWife, isChangeLastName, isChangeLastNameNewWife);
     }
-    public void adoptChild(Person child) throws Exception {
+    public void adoptChild(Person child) {
         adoptChildInner(child);
         child.setLastName(this.getLastName());
     }
