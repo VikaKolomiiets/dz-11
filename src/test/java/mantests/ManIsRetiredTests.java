@@ -11,8 +11,8 @@ public class ManIsRetiredTests {
     private static final int RETIRED_AGE = 65;
 
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "man-date-is-retired")
-    public void testisRetiredPositive(String firstName, String lastName, LocalDate dateOfBirth){
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-date-is-retired")
+    public void testManIsRetiredPositive(String firstName, String lastName, LocalDate dateOfBirth){
         Man man = new Man(firstName, lastName, dateOfBirth);
         Integer fullAge = man.getFullAge();
         if( fullAge>= RETIRED_AGE ){

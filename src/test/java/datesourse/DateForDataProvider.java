@@ -60,11 +60,11 @@ import java.time.LocalDate;
             return objects;
     }
 
-    @DataProvider(name = "man-date-is-retired")
+    @DataProvider(name = "person-date-is-retired")
         public static Object[][] setUpManDataIsRetired(){
         Object[][] objects = {
                 {"Lee", "Wong", LocalDate.of(1945, 10, 19)},
-                {"Lee", "Wong", LocalDate.of(1965, 10, 19)},
+                {"Lee", "Wong", LocalDate.of(1962, 10, 19)},
                 {"Lee", "Wong", LocalDate.of(1975, 10, 19)},
                 {"Lee", "Wong", LocalDate.of(1955, 10, 19)},
         };
