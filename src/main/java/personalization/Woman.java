@@ -28,7 +28,7 @@ public class Woman extends Person{
             child.setLastName(this.getLastName());
         }
     }
-    public void adoptChild(Person child) throws Exception {
+    public void adoptChild(Person child) {
         adoptChildInner(child);
         child.setLastName(this.getPartner().getLastName());
     }
