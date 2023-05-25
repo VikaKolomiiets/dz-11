@@ -1,8 +1,5 @@
 package personalization;
-import exceptions.DoubleActionException;
-import exceptions.NameException;
-import exceptions.OutOfRangeException;
-import exceptions.StringNullException;
+import exceptions.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -109,20 +106,19 @@ public abstract class Person {
         this.addChild(child);
         this.getPartner().addChild(child);
     }
-    protected void addChild(Person child) throws Exception {
+    protected void addChild(Person child) {
         this.checkIsAlive(this);
         if (child == null){
             throw new StringNullException("Child");
         }
         this.children.add(child);
     }
-
-    private void checkIsAlive(Person person) throws Exception {
+    private void checkIsAlive(Person person) {
         if(person.getDateOfDeath() != null){
-            throw new Exception("This Person is dead!");
+            throw new DeadPersonException(person.getFirstName(), person.getLastName());
         }
     }
-    private void checkMarried(Person person) throws Exception {
+    private void checkMarried(Person person) {
         if (person.getStatus().equals(Status.IS_MARRIED)){
             throw new DoubleActionException(person.getFirstName(), person.getLastName());
         }
@@ -140,7 +136,7 @@ public abstract class Person {
             throw new StringNullException("Date of Birth");
         }
         if (date.isBefore(MIN_DATE) || date.isAfter(LocalDate.now())){
-            throw new OutOfRangeException("Date of Birth");
+            throw new OutOfDataRangeException("Date of Birth");
         }
     }
     public void backToBirthLastName() {
