@@ -1,6 +1,7 @@
 package datesourse;
 
 import org.testng.annotations.DataProvider;
+import personalization.Man;
 import personalization.Woman;
 
 import java.time.LocalDate;
@@ -40,6 +41,15 @@ import java.time.LocalDate;
                 {new Woman("Lara", "Kruello", LocalDate.of(1978, 5, 18)), true, false}};
         return objects;
     }
+
+    @DataProvider(name = "person-data-adopt-child")
+        public static Object[][] setUpPersonDataAdoptChild(){
+            java.lang.Object[][] objects = {
+                    {new Man("Nikola", "Bunge", LocalDate.of(2018, 01, 28)),},
+                    {new Woman("Jully", "Woo", LocalDate.of(2020, 11, 01))},
+                    {new Man("Serge", "Bingo", LocalDate.of(2022, 05, 18))}};
+            return objects;
+        }
 
 
 }

@@ -100,7 +100,7 @@ public abstract class Person {
         if (!this.getStatus().equals(Status.IS_MARRIED)) {
             throw new MerriedStatusException(this.getFirstName(), this.getLastName());
         }
-        if (this.getFullAge() < ADOPTION_PARENT_AGE && this.getPartner().getFullAge() < ADOPTION_PARENT_AGE){
+        if (this.getFullAge() < ADOPTION_PARENT_AGE || this.getPartner().getFullAge() < ADOPTION_PARENT_AGE){
             throw new ParentAgeException(this.getFirstName(), this.getPartner().getFirstName());
         }
         this.addChild(child);
@@ -178,7 +178,7 @@ public abstract class Person {
     public Status getStatus() {
         return status;
     }
-    protected void setPartner(Person partner) {
+    public void setPartner(Person partner) {
         this.partner = partner;
     }
     public void setStatus(Status status) {
@@ -187,7 +187,7 @@ public abstract class Person {
     public void setDateOfDeath(LocalDate dateOfDeath) {
         this.dateOfDeath = dateOfDeath;
     }
-    protected List<Person> getChildren() {
+    public List<Person> getChildren() {
         return children;
     }
     //endregion
