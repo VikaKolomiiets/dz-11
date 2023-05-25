@@ -61,10 +61,10 @@ public abstract class Person {
         this.getPartner().setPartner(null);
         this.setPartner(null);
     }
-    public void passAway(LocalDate dateOfDeath) throws Exception {
+    public void passAway(LocalDate dateOfDeath) {
         this.checkDate(dateOfDeath);
         if(getDateOfBirth().isAfter(dateOfDeath)){
-            throw new Exception("Date of Death out of range");
+            throw new OutOfDataRangeException("Date of Death");
         }
         this.setDateOfDeath(dateOfDeath);
         if(this.getStatus() != Status.IS_MARRIED){
@@ -73,7 +73,7 @@ public abstract class Person {
         this.getPartner().setStatus(Status.WIDOWED);
     }
 
-    protected void createFamilyInner(Person newPartner, boolean isChangeLastName, boolean isChangeLastNameNewPartner) throws Exception {
+    protected void createFamilyInner(Person newPartner, boolean isChangeLastName, boolean isChangeLastNameNewPartner) {
         if (newPartner == null){
             throw new StringNullException("Partner");
         }
@@ -82,7 +82,7 @@ public abstract class Person {
         this.checkMarried(this);
         this.checkMarried(newPartner);
         if (isChangeLastName && isChangeLastNameNewPartner) {
-            throw new Exception("The Last name cannot be changed for both partners at one time");
+            throw new DoubleActionException();
         }
         this.setStatus(Status.IS_MARRIED);
         newPartner.setStatus(Status.IS_MARRIED);
@@ -95,7 +95,7 @@ public abstract class Person {
             newPartner.setLastName(this.getLastName());
         }
     }
-    protected void adoptChildInner(Person child) throws Exception {
+    protected void adoptChildInner(Person child) {
         this.checkIsAlive(child);
         if (!this.getStatus().equals(Status.IS_MARRIED)) {
             throw new StatusForAdoptingException(this.getFirstName(), this.getLastName());
