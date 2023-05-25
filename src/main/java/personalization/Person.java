@@ -98,10 +98,10 @@ public abstract class Person {
     protected void adoptChildInner(Person child) throws Exception {
         this.checkIsAlive(child);
         if (!this.getStatus().equals(Status.IS_MARRIED)) {
-            throw new Exception("Status have to be 'Married' for adopting child");
+            throw new StatusForAdoptingException(this.getFirstName(), this.getLastName());
         }
         if (this.getFullAge() < ADOPTION_PARENT_AGE && this.getPartner().getFullAge() < ADOPTION_PARENT_AGE){
-            throw new Exception("Parent have to be more than 18 years old.");
+            throw new ParentAgeException(this.getFirstName(), this.getPartner().getFirstName());
         }
         this.addChild(child);
         this.getPartner().addChild(child);
