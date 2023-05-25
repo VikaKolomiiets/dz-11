@@ -21,6 +21,5 @@ public class ManIsRetiredTests {
             Assert.assertFalse(man.isRetired(), "Man is retired, check " + RETIRED_AGE);
         }
         System.out.println(dateOfBirth + " : " + fullAge + " : " + man.isRetired());
-
     }
 }

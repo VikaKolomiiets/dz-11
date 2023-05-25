@@ -13,10 +13,10 @@ public class ManConstructorTests {
 
     @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data")
     public void testManConstructorPositive(String firstName, String lastName, LocalDate dateOfBirth ) {
-        Man innerMan = new Man(firstName, lastName, dateOfBirth);
-        Assert.assertEquals(innerMan.getFirstName(), firstName, "Constructor Man doesn't set first Name");
-        Assert.assertEquals(innerMan.getLastName(), lastName, "Constructor Man doesn't set last Name");
-        Assert.assertEquals(innerMan.getDateOfBirth(), dateOfBirth);
+        Man man = new Man(firstName, lastName, dateOfBirth);
+        Assert.assertEquals(man.getFirstName(), firstName, "Constructor Man doesn't set first Name");
+        Assert.assertEquals(man.getLastName(), lastName, "Constructor Man doesn't set last Name");
+        Assert.assertEquals(man.getDateOfBirth(), dateOfBirth);
     }
 
     @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-name-exception")
