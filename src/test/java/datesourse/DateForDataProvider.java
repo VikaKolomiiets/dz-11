@@ -44,12 +44,23 @@ import java.time.LocalDate;
 
     @DataProvider(name = "person-data-adopt-child")
         public static Object[][] setUpPersonDataAdoptChild(){
-            java.lang.Object[][] objects = {
+            Object[][] objects = {
                     {new Man("Nikola", "Bunge", LocalDate.of(2018, 01, 28)),},
                     {new Woman("Jully", "Woo", LocalDate.of(2020, 11, 01))},
                     {new Man("Serge", "Bingo", LocalDate.of(2022, 05, 18))}};
             return objects;
-        }
+    }
+
+    @DataProvider(name = "man-date-is-retired")
+        public static Object[][] setUpManDataIsRetired(){
+        Object[][] objects = {
+                {"Lee", "Wong", LocalDate.of(1945, 10, 19)},
+                {"Lee", "Wong", LocalDate.of(1965, 10, 19)},
+                {"Lee", "Wong", LocalDate.of(1975, 10, 19)},
+                {"Lee", "Wong", LocalDate.of(1955, 10, 19)},
+        };
+        return objects;
+    }
 
 
 }
