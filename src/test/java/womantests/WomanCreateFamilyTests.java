@@ -1,11 +1,15 @@
 package womantests;
 
 import datesourse.DateForDataProvider;
+import exceptions.DeadPersonException;
+import exceptions.DoubleActionException;
+import exceptions.ObjectNullException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import personalization.Man;
+import personalization.Status;
 import personalization.Woman;
 
 import java.time.LocalDate;
@@ -31,5 +35,57 @@ public class WomanCreateFamilyTests {
         Assert.assertEquals(this.woman.getPartner().getLastName(), newHusband.getLastName(), "The LastName of Husband doesn't correct");
         Assert.assertEquals(this.woman.getPartner().getDateOfBirth(), newHusband.getDateOfBirth(), "The LastName of Husband doesn't correct");
     }
-    
+
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "man-data-create-family")
+    public void testWomanCreateFamilyChangeLastName(Man newHusband, boolean isChangeLastName, boolean isChangeLastNameNewHusband){
+        this.woman.createFamily(newHusband, isChangeLastName, isChangeLastNameNewHusband);
+        if(isChangeLastName){
+            Assert.assertEquals(this.woman.getLastName(), newHusband.getLastName(), "Man didn't change LastName");
+        }
+        if(isChangeLastNameNewHusband){
+            Assert.assertEquals(this.woman.getPartner().getLastName(), this.woman.getLastName(), "Woman didn't cange LastName");
+        }
+    }
+    @Test
+    public void testWomanCreateFamilyNullObjectException(){
+        Assert.assertThrows(ObjectNullException.class, () -> this.woman.createFamily(null, false, true));
+    }
+    @Test
+    public void testWomanCreateFamilyDoubleActionException(){
+        Assert.assertThrows(DoubleActionException.class, () -> this.woman.createFamily(
+                new Man("Hans", "Hang", LocalDate.of(2010, 01, 01))
+                , true, true));
+    }
+    @Test
+    public void testWomanCreateFamilyCheckIsAliveException(){
+        this.woman.setDateOfDeath(LocalDate.of(2020, 10, 10));
+        Assert.assertThrows(DeadPersonException.class,() -> this.woman.createFamily(
+                new Man("Hans", "Hang", LocalDate.of(2010, 01, 01))
+                , false, true));
+    }
+
+    @Test
+    public void testWomanCreateFamilyCheckIsAliveManException(){
+        Man newHusband =  new Man("Hans", "Hang", LocalDate.of(2010, 01, 01));
+        newHusband.setDateOfDeath(LocalDate.of(2021,01,02));
+        Assert.assertThrows(DeadPersonException.class,() -> this.woman.createFamily(
+                newHusband, false, true));
+    }
+    @Test
+    public void testWomanCreateFamilyCheckMarriedException(){
+        this.woman.setStatus(Status.IS_MARRIED);
+        Assert.assertThrows(DoubleActionException.class, () -> this.woman.createFamily(
+                new Man("Hans", "Hang", LocalDate.of(2010, 01, 01))
+                , false, true));
+    }
+    @Test
+    public void testWomanCreateFamilyCheckMarriedManException(){
+        Man newHusband =  new Man("Hans", "Hang", LocalDate.of(2010, 01, 01));
+        newHusband.setStatus(Status.IS_MARRIED);
+        Assert.assertThrows(DoubleActionException.class, () -> this.woman.createFamily(
+                newHusband, false, true));
+    }
+
+
+
 }
