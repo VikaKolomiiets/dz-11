@@ -32,15 +32,24 @@ import java.time.LocalDate;
         return objects;
     }
 
-    @DataProvider(name = "person-data-create-family")
-        public static Object[][] setUpPersonDataCreateFamily(){
+    @DataProvider(name = "woman-data-create-family")
+        public static Object[][] setUpForManDataCreateFamily(){
         Object[][] objects = {
                 {new Woman("Nina", "BLonde", LocalDate.of(1982, 1, 28)), false, true},
                 {new Woman("Lara", "Kruello", LocalDate.of(1968, 9, 19)), false, true},
                 {new Woman("Mirra", "Loo", LocalDate.of(1990, 10, 10)), true, false},
-                {new Woman("Lara", "Kruello", LocalDate.of(1978, 5, 18)), true, false}};
+                {new Woman("Klara", "Rullo", LocalDate.of(1978, 5, 18)), true, false}};
         return objects;
     }
+        @DataProvider(name = "man-data-create-family")
+        public static Object[][] setUpForWomanDataCreateFamily(){
+            Object[][] objects = {
+                    {new Man("Nik", "Bonde", LocalDate.of(1982, 1, 28)), false, true},
+                    {new Man("KarLos", "Ruello", LocalDate.of(1968, 9, 19)), false, true},
+                    {new Man("Moor", "Loo", LocalDate.of(1990, 10, 10)), true, false},
+                    {new Man("Larry", "Kruello", LocalDate.of(1978, 5, 18)), true, false}};
+            return objects;
+        }
 
     @DataProvider(name = "person-data-adopt-child")
         public static Object[][] setUpPersonDataAdoptChild(){

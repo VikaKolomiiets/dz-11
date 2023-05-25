@@ -27,7 +27,7 @@ public class ManCreateFamilyTests {
         this.man = null;
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-create-family")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "woman-data-create-family")
     public void testManCreateFamilyPositive(Woman newWife, boolean isChangeLastName, boolean isChangeLastNameNewWife){
 
         this.man.createFamily(newWife, isChangeLastName, isChangeLastNameNewWife);
@@ -37,7 +37,7 @@ public class ManCreateFamilyTests {
         Assert.assertEquals(this.man.getPartner().getDateOfBirth(), newWife.getDateOfBirth(), "The LastName of newWife doesn't correct");
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-create-family")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "woman-data-create-family")
     public void testManCreateFamilyChangeLastName(Woman newWife, boolean isChangeLastName, boolean isChangeLastNameNewWife){
         this.man.createFamily(newWife, isChangeLastName, isChangeLastNameNewWife);
         if(isChangeLastName){
