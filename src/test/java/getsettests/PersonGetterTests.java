@@ -11,8 +11,9 @@ import personalization.Woman;
 import java.time.LocalDate;
 
 public class PersonGetterTests {
-    @Test
+
     @Parameters("name")
+    @Test
     public void testGetFirstNamePositive(String firstName){
         Person man = new Man(firstName, "secondName", LocalDate.of(2000, 1, 2));
         Assert.assertEquals(man.getFirstName(), firstName, "Getter first name doesn't work.");

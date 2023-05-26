@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" verbose="1">
+    <test name="Test one">
+        <classes>
+            <class name="src/test/java/getsettests/PersonGetterTests.java">
+                <parameter name="name" value="Wong" />
+                <methods>
+                    <include name="testGetFirstNamePositive" />
+                    <include name="testGetLastNamePositive" />
+                    <include name="testGetBirthLastNamePositive" />
+                </methods>
+                <parameter name="yyyy" value="1976"></parameter>
+                <parameter name="mm" value="10"></parameter>
+                <parameter name="dd" value="11"></parameter>
+                <methods>
+                    <include name="testGetDateOfBirthPositive" />
+                    <include name="testPersonGetDateOfDeath" />
+                </methods>
+                <parameter name="name1" value="Ann"></parameter>
+                <parameter name="name2" value="Lezard"></parameter>
+                <methods>
+                    <include name="testPersonGetPartner" />
+                </methods>
+                <parameter name="status" value="IS_DIVORCED"></parameter>
+                <methods>
+                    <include name="testPersonGetStatus" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+
+
+
+</suite>
