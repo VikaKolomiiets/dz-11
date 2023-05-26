@@ -51,8 +51,8 @@ import java.time.LocalDate;
             return objects;
         }
 
-    @DataProvider(name = "person-data-adopt-child")
-        public static Object[][] setUpPersonDataAdoptChild(){
+    @DataProvider(name = "person-data-adopt-getbirth-child")
+        public static Object[][] setUpPersonDataAdoptOrBirthChild(){
             Object[][] objects = {
                     {new Man("Nikola", "Bunge", LocalDate.of(2018, 01, 28)),},
                     {new Woman("Jully", "Woo", LocalDate.of(2020, 11, 01))},

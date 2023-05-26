@@ -28,7 +28,7 @@ public class ManAdoptChildTests {
         this.man = null;
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-child")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-getbirth-child")
     public void testManAdoptChildPositive(Person person){
         String beforeLastNameChild = person.getLastName();
         this.man.adoptChild(person);
@@ -38,7 +38,7 @@ public class ManAdoptChildTests {
         Assert.assertNotEquals(afterLastNameChild, beforeLastNameChild, "LastName was not changed");
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-child")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-getbirth-child")
     public void testManAdoptChildCheckIsAliveException(Person child){
         child.setDateOfDeath(LocalDate.of(2023, 01,01));
         Assert.assertThrows(DeadPersonException.class, () -> this.man.adoptChild(child));

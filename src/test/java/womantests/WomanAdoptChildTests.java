@@ -28,7 +28,7 @@ public class WomanAdoptChildTests {
         this.woman = null;
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-child")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-getbirth-child")
     public void testWomanAdoptChildPositive(Person person){
         String beforeLastNameChild = person.getLastName();
         String expectedLastName = this.woman.getPartner().getLastName();
@@ -40,7 +40,7 @@ public class WomanAdoptChildTests {
         Assert.assertNotEquals(actualLastName, beforeLastNameChild, "LastName was not changed");
     }
 
-    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-child")
+    @Test(dataProviderClass = DateForDataProvider.class, dataProvider = "person-data-adopt-getbirth-child")
     public void testWomanAdoptChildCheckIsAliveException(Person child){
         child.setDateOfDeath(LocalDate.of(2023, 01,01));
         Assert.assertThrows(DeadPersonException.class, () -> this.woman.adoptChild(child));
