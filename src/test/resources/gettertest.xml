@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<suite name="Suite first" parallel="tests" verbose="2">
-    <test name="Test first">
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite first" parallel="tests" verbose="3">
+    <test name="Parameter Test one">
+        <parameter name="name" value="Wong" />
         <classes>
             <class name="getsettests.PersonGetterTests">
-                <parameter name="name" value="Wong" />
                 <methods>
                     <include name="testGetFirstNamePositive" />
                     <include name="testGetLastNamePositive" />
                     <include name="testGetBirthLastNamePositive" />
                 </methods>
-                <parameter name="yyyy" value="1976"></parameter>
-                <parameter name="mm" value="10"></parameter>
-                <parameter name="dd" value="11"></parameter>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test two">
+        <parameter name="yyyy" value="1976"></parameter>
+        <parameter name="mm" value="10"></parameter>
+        <parameter name="dd" value="11"></parameter>
+        <classes>
+            <class name="getsettests.PersonGetterTests">
                 <methods>
                     <include name="testGetDateOfBirthPositive" />
                     <include name="testPersonGetDateOfDeathPositive" />
                 </methods>
-                <parameter name="name1" value="Ann"></parameter>
-                <parameter name="name2" value="Lezard"></parameter>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test three">
+        <parameter name="name1" value="Ann"></parameter>
+        <parameter name="name2" value="Lezard"></parameter>
+        <classes>
+            <class name="getsettests.PersonGetterTests">
                 <methods>
                     <include name="testPersonGetPartnerPositive" />
                 </methods>
-                <parameter name="status" value="IS_DIVORCED"></parameter>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test four">
+        <parameter name="status" value="IS_DIVORCED"></parameter>
+        <classes>
+            <class name="getsettests.PersonGetterTests">
                 <methods>
                     <include name="testPersonGetStatusPositive" />
                 </methods>

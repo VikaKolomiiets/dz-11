@@ -45,7 +45,7 @@ public class PersonSetterTests {
         LocalDate dateBeforeSet = person.getDateOfDeath();
         person.setDateOfDeath(LocalDate.of(year, month, day));
         Assert.assertEquals(person.getDateOfDeath().getYear(), year, "Setter for Date of death doesn't work for year");
-        Assert.assertEquals(person.getDateOfDeath().getMonth(), month, "Setter for Date of death doesn't work for month");
+        Assert.assertEquals(person.getDateOfDeath().getMonth().getValue(), month, "Setter for Date of death doesn't work for month");
         Assert.assertEquals(person.getDateOfDeath().getDayOfMonth(), day, "Setter for Date of death doesn't work for day");
         Assert.assertNotEquals(person.getDateOfDeath(), dateBeforeSet, "Setter for Date of death doesn't work");
     }

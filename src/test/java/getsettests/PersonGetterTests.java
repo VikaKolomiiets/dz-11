@@ -12,8 +12,8 @@ import java.time.LocalDate;
 
 public class PersonGetterTests {
 
-    @Parameters("name")
     @Test
+    @Parameters("name")
     public void testGetFirstNamePositive(String firstName){
         Person man = new Man(firstName, "secondName", LocalDate.of(2000, 1, 2));
         Assert.assertEquals(man.getFirstName(), firstName, "Getter first name doesn't work.");
@@ -48,7 +48,7 @@ public class PersonGetterTests {
         Person man = new Man("Gans", "Andersen", LocalDate.of(1960, 12, 30));
         man.setDateOfDeath(LocalDate.of(year, month, day));
         Assert.assertEquals(man.getDateOfDeath().getYear(), year, "Getter of DateOfDeath doesn't give correct year ");
-        Assert.assertEquals(man.getDateOfDeath().getMonth(), month, "Getter of DateOfDeath doesn't give correct month");
+        Assert.assertEquals(man.getDateOfDeath().getMonth().getValue(), month, "Getter of DateOfDeath doesn't give correct month");
         Assert.assertEquals(man.getDateOfDeath().getDayOfMonth(), day, "Getter of DateOfDeath doesn't give correct day");
     }
 
