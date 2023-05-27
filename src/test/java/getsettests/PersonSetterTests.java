@@ -1,0 +1,64 @@
+package getsettests;
+
+import org.testng.Assert;
+import org.testng.annotations.*;
+import personalization.Man;
+import personalization.Person;
+import personalization.Woman;
+
+import java.time.LocalDate;
+
+public class PersonSetterTests {
+    Person person;
+    @BeforeMethod
+    public void setUpPerson(){
+        person = new Man("Van", "Gog", LocalDate.of(1995, 02,17));
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        person = null;
+    }
+
+    @Parameters("name")
+    @Test
+    public void testSetFirstNamePositive(String firstName){
+        String nameBeforeSet = person.getFirstName();
+        person.setFirstName(firstName);
+        Assert.assertNotEquals(person.getFirstName(), nameBeforeSet, "Setter for First Name doesn't work");
+        Assert.assertEquals( person.getFirstName(), firstName, "Setter for First Name doesn't work");
+    }
+
+    @Parameters("name")
+    @Test
+    public void testSetLastNamePositive(String lastName){
+        String nameBeforeSet = person.getLastName();
+        person.setLastName(lastName);
+        Assert.assertNotEquals(person.getLastName(), nameBeforeSet, "Setter for Last Name doesn't work");
+        Assert.assertEquals( person.getLastName(), lastName, "Setter for Last Name doesn't work");
+    }
+
+    @Parameters({"yyyy", "mm", "dd"})
+    @Test
+    public void testSetDateOfDeathPositive(int year, int month, int day){
+        LocalDate dateBeforeSet = person.getDateOfDeath();
+        person.setDateOfDeath(LocalDate.of(year, month, day));
+        Assert.assertEquals(person.getDateOfDeath().getYear(), year, "Setter for Date of death doesn't work for year");
+        Assert.assertEquals(person.getDateOfDeath().getMonth(), month, "Setter for Date of death doesn't work for month");
+        Assert.assertEquals(person.getDateOfDeath().getDayOfMonth(), day, "Setter for Date of death doesn't work for day");
+        Assert.assertNotEquals(person.getDateOfDeath(), dateBeforeSet, "Setter for Date of death doesn't work");
+    }
+
+
+    @Parameters({"name1", "name2"})
+    @Test
+    public void testPersonSetPartner(String firstName, String lastName){
+        person.setPartner(new Woman(firstName, lastName, LocalDate.of(1998, 12, 30)));
+        Assert.assertNotNull(person.getPartner());
+        Assert.assertEquals(person.getPartner().getFirstName(), firstName, "Setter Partner doesn't work for first Name");
+        Assert.assertEquals(person.getPartner().getLastName(), lastName, "Setter Partner doesn't work for last Name");
+    }
+
+
+
+}
