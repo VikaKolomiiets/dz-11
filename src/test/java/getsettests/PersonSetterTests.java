@@ -1,5 +1,7 @@
 package getsettests;
 
+import exceptions.NameException;
+import exceptions.OutOfDataRangeException;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import personalization.Man;
@@ -65,6 +67,25 @@ public class PersonSetterTests {
         person.setStatus(Status.valueOf(status));
         Assert.assertEquals(person.getStatus().name(), status, "Getter of Status doesn't work");
     }
+
+    @Parameters("name-mistake")
+    @Test
+    public void testSetFirstNameException(String firstName){
+        Assert.assertThrows(NameException.class, () -> person.setFirstName(firstName));
+    }
+
+    @Parameters("name-mistake")
+    @Test
+    public void testSetLastNameException(String lastName){
+        Assert.assertThrows(NameException.class, () -> person.setLastName(lastName));
+    }
+
+    @Parameters("yyyy-bad")
+    @Test
+    public void testSetDateOfDeathException(int year){
+        Assert.assertThrows(OutOfDataRangeException.class, () -> person.setDateOfDeath(LocalDate.of(year, 11, 10)));
+    }
+
 
 
 

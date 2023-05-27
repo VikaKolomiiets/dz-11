@@ -1,6 +1,7 @@
 package getsettests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import personalization.Man;
@@ -38,7 +39,7 @@ public class PersonGetterTests {
     public void testGetDateOfBirthPositive(int year, int month, int day){
         Person man = new Man("Gans", "Andersen", LocalDate.of(year, month, day));
         Assert.assertEquals(man.getDateOfBirth().getYear(), year, "Getter of DateOfBirth doesn't give correct year ");
-        Assert.assertEquals(man.getDateOfBirth().getMonth(), month, "Getter of DateOfBirth doesn't give correct month");
+        Assert.assertEquals(man.getDateOfBirth().getMonth().getValue(), month, "Getter of DateOfBirth doesn't give correct month");
         Assert.assertEquals(man.getDateOfBirth().getDayOfMonth(), day, "Getter of DateOfBirth doesn't give correct day");
     }
 

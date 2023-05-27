@@ -179,12 +179,18 @@ public abstract class Person {
         return status;
     }
     public void setPartner(Person partner) {
-        this.partner = partner;
+        if(this.partner == null){
+            this.partner = partner;
+        }
     }
     public void setStatus(Status status) {
         this.status = status;
     }
     public void setDateOfDeath(LocalDate dateOfDeath) {
+        checkDate(dateOfDeath);
+        if (!dateOfDeath.isAfter(dateOfBirth)){
+            throw new OutOfDataRangeException(dateOfDeath.toString());
+        }
         this.dateOfDeath = dateOfDeath;
     }
     public List<Person> getChildren() {
