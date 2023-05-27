@@ -44,7 +44,7 @@ public class PersonGetterTests {
 
     @Test
     @Parameters({"yyyy", "mm", "dd"})
-    public void testPersonGetDateOfDeath(int year, int month, int day){
+    public void testPersonGetDateOfDeathPositive(int year, int month, int day){
         Person man = new Man("Gans", "Andersen", LocalDate.of(1960, 12, 30));
         man.setDateOfDeath(LocalDate.of(year, month, day));
         Assert.assertEquals(man.getDateOfDeath().getYear(), year, "Getter of DateOfDeath doesn't give correct year ");
@@ -54,7 +54,7 @@ public class PersonGetterTests {
 
     @Test
     @Parameters({"name1", "name2"})
-    public void testPersonGetPartner(String firstName, String lastName){
+    public void testPersonGetPartnerPositive(String firstName, String lastName){
         Person man = new Man("Gans", "Andersen", LocalDate.of(1960, 12, 30));
         man.setPartner(new Woman(firstName, lastName, LocalDate.of(1974, 01, 01)));
         Assert.assertEquals(man.getPartner().getFirstName(), firstName, "Getter Partner first name is not correct");
@@ -62,7 +62,7 @@ public class PersonGetterTests {
     }
     @Test
     @Parameters("status")
-    public void testPersonGetStatus(String status){
+    public void testPersonGetStatusPositive(String status){
         Person woman = new Woman("Hanna", "Ghoo", LocalDate.of(1985, 10, 5));
         woman.setStatus(Status.valueOf(status));
         Assert.assertEquals(woman.getStatus().name(), status, "Getter of Status doesn't work");

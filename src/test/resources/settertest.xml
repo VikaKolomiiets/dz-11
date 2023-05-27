@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite second" parallel="tests" verbose="10">
+    <test name="Test second">
+        <classes>
+            <class name="getsettests.PersonSetterTests">
+                <parameter name="name" value="Flower" />
+                <methods>
+                    <include name="testSetFirstNamePositive" />
+                    <include name="testSetLastNamePositive" />
+                </methods>
+                <parameter name="yyyy" value="2020"></parameter>
+                <parameter name="mm" value="1"></parameter>
+                <parameter name="dd" value="1"></parameter>
+                <methods>
+                    <include name="testSetDateOfDeathPositive" />
+                </methods>
+                <parameter name="name1" value="Hanna"></parameter>
+                <parameter name="name2" value="Luiza"></parameter>
+                <methods>
+                    <include name="testPersonSetPartnerPositive" />
+                </methods>
+                <parameter name="status" value="IS_MARRIED"></parameter>
+                <methods>
+                    <include name="testPersonSetStatusPositive" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

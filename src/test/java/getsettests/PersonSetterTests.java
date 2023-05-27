@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import personalization.Man;
 import personalization.Person;
+import personalization.Status;
 import personalization.Woman;
 
 import java.time.LocalDate;
@@ -52,11 +53,17 @@ public class PersonSetterTests {
 
     @Parameters({"name1", "name2"})
     @Test
-    public void testPersonSetPartner(String firstName, String lastName){
+    public void testPersonSetPartnerPositive(String firstName, String lastName){
         person.setPartner(new Woman(firstName, lastName, LocalDate.of(1998, 12, 30)));
         Assert.assertNotNull(person.getPartner());
         Assert.assertEquals(person.getPartner().getFirstName(), firstName, "Setter Partner doesn't work for first Name");
         Assert.assertEquals(person.getPartner().getLastName(), lastName, "Setter Partner doesn't work for last Name");
+    }
+    @Parameters("status")
+    @Test
+    public void testPersonSetStatusPositive(String status){
+        person.setStatus(Status.valueOf(status));
+        Assert.assertEquals(person.getStatus().name(), status, "Getter of Status doesn't work");
     }
 
 

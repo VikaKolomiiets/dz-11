@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<suite name="Suite" parallel="tests" verbose="2">
-    <test name="Test">
+<suite name="Suite first" parallel="tests" verbose="2">
+    <test name="Test first">
         <classes>
             <class name="getsettests.PersonGetterTests">
                 <parameter name="name" value="Wong" />
@@ -15,16 +15,16 @@
                 <parameter name="dd" value="11"></parameter>
                 <methods>
                     <include name="testGetDateOfBirthPositive" />
-                    <include name="testPersonGetDateOfDeath" />
+                    <include name="testPersonGetDateOfDeathPositive" />
                 </methods>
                 <parameter name="name1" value="Ann"></parameter>
                 <parameter name="name2" value="Lezard"></parameter>
                 <methods>
-                    <include name="testPersonGetPartner" />
+                    <include name="testPersonGetPartnerPositive" />
                 </methods>
                 <parameter name="status" value="IS_DIVORCED"></parameter>
                 <methods>
-                    <include name="testPersonGetStatus" />
+                    <include name="testPersonGetStatusPositive" />
                 </methods>
             </class>
         </classes>
