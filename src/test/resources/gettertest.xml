@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite first" parallel="tests" verbose="2">
+<suite name="Suite first" verbose="2">
     <test name="Parameter Test one">
         <parameter name="name" value="Wong" />
         <classes>
@@ -14,9 +14,9 @@
         </classes>
     </test>
     <test name="Parameter Test two">
-        <parameter name="yyyy" value="1976"></parameter>
-        <parameter name="mm" value="10"></parameter>
-        <parameter name="dd" value="11"></parameter>
+        <parameter name="yyyy" value="1976"/>
+        <parameter name="mm" value="10"/>
+        <parameter name="dd" value="11"/>
         <classes>
             <class name="getsettests.PersonGetterTests">
                 <methods>
@@ -27,8 +27,8 @@
         </classes>
     </test>
     <test name="Parameter Test three">
-        <parameter name="name1" value="Ann"></parameter>
-        <parameter name="name2" value="Lezard"></parameter>
+        <parameter name="name1" value="Ann"/>
+        <parameter name="name2" value="Lezard"/>
         <classes>
             <class name="getsettests.PersonGetterTests">
                 <methods>
@@ -38,7 +38,7 @@
         </classes>
     </test>
     <test name="Parameter Test four">
-        <parameter name="status" value="IS_DIVORCED"></parameter>
+        <parameter name="status" value="IS_DIVORCED"/>
         <classes>
             <class name="getsettests.PersonGetterTests">
                 <methods>

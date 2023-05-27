@@ -1,6 +1,7 @@
 package getsettests;
 
 import exceptions.NameException;
+import exceptions.ObjectNullException;
 import exceptions.OutOfDataRangeException;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -84,6 +85,18 @@ public class PersonSetterTests {
     @Test
     public void testSetDateOfDeathException(int year){
         Assert.assertThrows(OutOfDataRangeException.class, () -> person.setDateOfDeath(LocalDate.of(year, 11, 10)));
+    }
+
+    @Parameters("name-null")
+    @Test
+    public void testSetFirstNameNullException(String name){
+        Assert.assertThrows(ObjectNullException.class, () -> person.setFirstName(name));
+    }
+
+    @Parameters("name-null")
+    @Test
+    public void testSetLastNameNullException(String name){
+        Assert.assertThrows(ObjectNullException.class, () -> person.setLastName(name));
     }
 
 

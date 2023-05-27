@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite second" parallel="tests" verbose="2">
+<suite name="Suite second"  verbose="2">
     <test name="Parameter Test one">
         <classes>
             <parameter name="name" value="Flow" />
@@ -61,6 +61,17 @@
             <class name="getsettests.PersonSetterTests">
                 <methods>
                     <include name="testSetDateOfDeathException"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Parameter Test seven">
+        <classes>
+            <parameter name="name-null" value="null"/>
+            <class name="getsettests.PersonSetterTests">
+                <methods>
+                    <include name="testSetFirstNameNullException"/>
+                    <include name="testSetLastNameNullException" />
                 </methods>
             </class>
         </classes>
